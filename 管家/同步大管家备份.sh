@@ -85,7 +85,7 @@ git config --show-origin --get-all credential.helper > "$BASE/连接器/credenti
 echo
 echo "━━━ 操作 2：GitHub 推送 ━━━"
 REPO="https://github.com/leipenglong/agent-workbuddy.git"
-WORK="$BASE/大管家/.git-sync"
+WORK="C:/Users/Administrator/.workbuddy/repos/agent-workbuddy"
 GITOK=0
 
 if ! command -v git >/dev/null 2>&1; then
@@ -129,6 +129,7 @@ else
 
     # 同步备份体系说明到 备份说明/
     mkdir -p "$WORK/备份说明"
+    rm -rf "$WORK/备份说明/技能"
     [ -d "$BASE/技能" ] && cp -r "$BASE/技能" "$WORK/备份说明/技能" 2>/dev/null
     [ -f "$BASE/连接器/配置说明.md" ] && cp "$BASE/连接器/配置说明.md" "$WORK/备份说明/" 2>/dev/null
 
