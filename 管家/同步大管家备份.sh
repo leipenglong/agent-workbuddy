@@ -111,10 +111,11 @@ else
     git -C "$WORK" config user.name "leipenglong"
     git -C "$WORK" config user.email "leipenglong@users.noreply.github.com"
 
-    # 同步专家包到 agents/<专家名>/
+    # 同步专家包到 agents/<专家名>/（镜像：先清空再拷，确保已删除文件被带走）
     for d in "$EXPERTS_SRC"/*/; do
       [ -d "$d" ] || continue
       name=$(basename "$d")
+      rm -rf "$WORK/agents/$name"
       mkdir -p "$WORK/agents/$name"
       cp -r "$d." "$WORK/agents/$name/"
       rm -f "$WORK/agents/$name/.gitkeep"
